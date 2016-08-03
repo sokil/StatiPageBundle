@@ -3,6 +3,11 @@ StaticPageBundle
 
 ## Configuration
 
+### Page view
+
+Place file to `app/Resources/StaticPageBundle/views/Page/index.html.twig` with your own markup of static page.
+Page instance `Sokil\StaticPageBundle\Entity\Page` accessable as `page` variable, also `locale` must be passed to template. To get localized data, call `page.getLocalizations()[locale]` which gives you instance of `Sokil\StaticPageBundle\Entity\PageLocalization`. 
+
 ### Routing
 
 To enable default routing configuration just add `routing.yml` to you routes config `app/config/routing.yml`:
