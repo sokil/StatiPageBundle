@@ -3,6 +3,16 @@ StaticPageBundle
 
 ## Configuration
 
+### Routing
+
+To enable default routing configuration just add `routing.yml` to you routes config `app/config/routing.yml`:
+```yaml
+static_page:
+    resource: "@StaticPageBundle/Resources/config/routing.yml"
+    prefix:   /
+```
+Or add your own routes for required actions.
+
 ### Roles
 
 Register role at `app/config/security.yml`:
