@@ -1,0 +1,25 @@
+services:
+    static_page.page_router:
+        class: Symfony\Cmf\Component\Routing\DynamicRouter
+        arguments:
+            - "@router.request_context"
+            - "@static_page.nested_matcher"
+            - "@cmf_routing.generator"
+        tags:
+            - { name: router }
+
+    static_page.nested_matcher:
+        class: Symfony\Cmf\Component\Routing\NestedMatcher\NestedMatcher
+        arguments: ["@static_page.route_provider"]
+        calls:
+            - [setFinalMatcher, ["@static_page.url_matcher"]]
+
+    static_page.route_provider:
+        class: Sokil\StaticPageBundle\Provider\PageRouteProvider
+        arguments: ["@doctrine"]
+
+    static_page.url_matcher:
+        class: Symfony\Cmf\Component\Routing\NestedMatcher\UrlMatcher
+        arguments:
+            - "@cmf_routing.matcher.dummy_collection"
+            - "@cmf_routing.matcher.dummy_context"

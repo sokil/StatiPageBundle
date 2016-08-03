@@ -1,0 +1,17 @@
+{% extends "TaskStockBundle::layout.default.html.twig" %}
+
+{% block title %}{{ page.getLocalizations()[locale].getTitle() }} :: {% endblock %}
+
+{% block content %}
+    <div class="container top-space bottom-space">
+        <div class="block">
+            <h1 class="title">{{ page.getLocalizations()[locale].getTitle() }}</h1>
+            <div class="content">
+                {{ page.getLocalizations()[locale].getBody()|raw }}
+            </div>
+        </div>
+    </div>
+    {% if google_analytics_code %}
+        {% include "SiteCoreBundle:Widget:ga.html.twig" %}
+    {% endif %}
+{% endblock %}
