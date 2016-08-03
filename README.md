@@ -18,6 +18,19 @@ static_page:
 ```
 Or add your own routes for required actions.
 
+To route any unexisted url to static page handler, you need to add some configuration to `app/config/config.yml`:
+```yaml
+cmf_routing:
+    chain:
+        routers_by_id:
+            router.default: 200
+            static_page.page_router: 100
+    dynamic:
+        persistence:
+            orm:
+                enabled: true
+```
+
 ### Roles
 
 Register role at `app/config/security.yml`:
