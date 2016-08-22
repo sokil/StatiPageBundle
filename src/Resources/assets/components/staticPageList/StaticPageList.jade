@@ -1,0 +1,19 @@
+table.table.table-striped.table-hover.top-space
+    col
+    col
+    col
+    col(width="100px")
+    tr
+        th Id
+        th Title
+        th.hidden-xs.hidden-sm Slug
+        th
+    each page in pages
+        tr
+            td= page.get('id')
+            td= page.get('title')
+            td.hidden-xs.hidden-sm= page.get('slug')
+            td
+                a.btn.btn-xs.btn-success.edit(href="/#pages/" + page.get('id') + "/edit") Edit
+                | 
+                a.btn.btn-xs.btn-danger.delete(data-id=page.get('id')) Delete

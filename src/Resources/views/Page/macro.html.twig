@@ -1,0 +1,14 @@
+{% macro jsResources() %}
+    {% javascripts
+        '@StaticPageBundle/Resources/public/js/components.jade.js'
+
+        '@StaticPageBundle/Resources/assets/models/staticPage/StaticPage.js'
+        '@StaticPageBundle/Resources/assets/models/staticPage/StaticPageCollection.js'
+
+        '@StaticPageBundle/Resources/assets/components/staticPagesPage/StaticPagesPageView.js'
+        '@StaticPageBundle/Resources/assets/components/staticPageList/StaticPageListView.js'
+        '@StaticPageBundle/Resources/assets/components/staticPageEditor/StaticPageEditorView.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endmacro %}
