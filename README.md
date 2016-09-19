@@ -8,6 +8,36 @@ Install bundle through composer:
 composer.phar require sokil/static-page-bundle
 ```
 
+Add bundle to AppKernel:
+```php
+<?php
+
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
+            new Sokil\StaticPageBundle\StaticPageBundle(),
+        );
+    }
+}
+```
+
+Bundle requre route handling, so configyre `cmf_rouring`:
+
+```yaml
+cmf_routing:
+    chain:
+        routers_by_id:
+            router.default: 200
+            static_page.page_router: 100
+    dynamic:
+        persistence:
+            orm:
+                enabled: true
+```
+
 Bundle uses assetic so you need to register it in assetic config:
 ```yaml
 assetic:
