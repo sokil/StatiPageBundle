@@ -1,6 +1,20 @@
 StaticPageBundle
 ================
 
+## Installation
+
+Install bundle through composer:
+```
+composer.phar reequire sokil/static-page-bundle
+```
+
+Bundle uses assetic so you need to register it in assetic config:
+```yaml
+assetic:
+    bundles:
+        - StaticPageBundle
+```
+
 ## Configuration
 
 ### Page view
