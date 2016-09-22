@@ -38,6 +38,13 @@ cmf_routing:
                 enabled: true
 ```
 
+Register routing in `./app/console/routing.yml`:
+```yaml
+static_page:
+    resource: "@StaticPageBundle/Resources/config/routing.yml"
+    prefix:   /
+```
+
 Bundle uses assetic so you need to register it in assetic config:
 ```yaml
 assetic:
