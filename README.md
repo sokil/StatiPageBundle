@@ -99,7 +99,7 @@ security:
 
 ## SPA view
 
-Bundle has some SPA routes for managing static pages, so yoy can configure them, for example with `sokil/frontend-bundle`:
+Bundle has some SPA routes for managing static pages, so yoy can configure them, for example with [sokil/frontend-bundle](https://github.com/sokil/FrontendBundle):
 
 ```html
 {% import "@FrontendBundle/Resources/views/macro.html.twig" as frontend %}
