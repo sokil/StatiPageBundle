@@ -26,15 +26,6 @@ class AppKernel extends Kernel
 
 ## Configuration
 
-### Deploy
-
-Bundle uses `assetic` bundle, so you need to register it in assetic config:
-```yaml
-assetic:
-    bundles:
-        - StaticPageBundle
-```
-
 ### Page view
 
 Place file to `app/Resources/StaticPageBundle/views/Page/index.html.twig` with your own markup of static page.
@@ -100,4 +91,21 @@ Bundle has some SPA routes for managing static pages, so yoy can configure them,
         window.app.start();
     })();
 </script>
+```
+
+### Deploy
+
+If you want to use embedded editor, you need to setup SPA.
+
+You need to execute grunt tasks to build [SPA](#SPA-view):
+```
+npm install
+grunt
+```
+
+Bundle uses `assetic` bundle, so you need to register it in assetic config:
+```yaml
+assetic:
+  bundles:
+    - StaticPageBundle
 ```
