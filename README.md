@@ -24,35 +24,16 @@ class AppKernel extends Kernel
 }
 ```
 
-Bundle requre route handling, so configyre `cmf_rouring`:
+## Configuration
 
-```yaml
-cmf_routing:
-    chain:
-        routers_by_id:
-            router.default: 200
-            static_page.page_router: 100
-    dynamic:
-        persistence:
-            orm:
-                enabled: true
-```
+### Deploy
 
-Register routing in `./app/console/routing.yml`:
-```yaml
-static_page:
-    resource: "@StaticPageBundle/Resources/config/routing.yml"
-    prefix:   /
-```
-
-Bundle uses assetic so you need to register it in assetic config:
+Bundle uses `assetic` bundle, so you need to register it in assetic config:
 ```yaml
 assetic:
     bundles:
         - StaticPageBundle
 ```
-
-## Configuration
 
 ### Page view
 
