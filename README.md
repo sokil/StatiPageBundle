@@ -1,6 +1,29 @@
 StaticPageBundle
 ================
 
+## Installation
+
+Install bundle through composer:
+```
+composer.phar require sokil/static-page-bundle
+```
+
+Add bundle to AppKernel:
+```php
+<?php
+
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
+            new Sokil\StaticPageBundle\StaticPageBundle(),
+        );
+    }
+}
+```
+
 ## Configuration
 
 ### Page view
@@ -44,4 +67,45 @@ security:
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
         ROLE_PAGE_MANAGER:          [ROLE_USER]
+```
+
+## SPA view
+
+Bundle has some SPA routes for managing static pages, so yoy can configure them, for example with [sokil/frontend-bundle](https://github.com/sokil/FrontendBundle):
+
+```html
+{% import "@FrontendBundle/Resources/views/macro.html.twig" as frontend %}
+{% import "@StaticPageBundle/Resources/views/macro.html.twig" as staticPageSpa %}
+
+{{ staticPageSpa.jsResources() }}
+
+<script type="text/javascript">
+    (function() {
+        // app options
+        var options = {{ applicationData|json_encode|raw }};
+        // router
+        options.routers = [
+            StaticPageRouter
+        ];
+        window.app = new Application(options);
+        window.app.start();
+    })();
+</script>
+```
+
+### Deploy
+
+If you want to use embedded editor, you need to setup SPA.
+
+You need to execute grunt tasks to build [SPA](#SPA-view):
+```
+npm install
+grunt
+```
+
+Bundle uses `assetic` bundle, so you need to register it in assetic config:
+```yaml
+assetic:
+  bundles:
+    - StaticPageBundle
 ```
