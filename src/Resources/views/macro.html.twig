@@ -14,4 +14,12 @@
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
+    {% javascripts
+        "../vendor/sokil/static-page-bundle/src/Resources/public/js/messages.{locale}.js"
+        vars=["locale"]
+        output="js/staticPage.messages.{locale}.js"
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endmacro %}

@@ -5,6 +5,12 @@ module.exports = function (grunt) {
     grunt.config('env', env);
     console.log('Environment: ' + env);
 
+    grunt.config('locales', [
+        'uk',
+        'en',
+        'ru'
+    ]);
+
     grunt.initConfig({
         jshint: {
             files: [],
@@ -16,6 +22,19 @@ module.exports = function (grunt) {
                     module: true
                 }
             }
+        },
+        uglify: {
+            messages: {
+                files: (function () {
+                    var files = {}, locale;
+                    grunt.config('locales').forEach(function (locale) {
+                        files['Resources/public/js/messages.' + locale + '.js'] = [
+                            'Resources/assets/components/*/messages.' + locale + '.js'
+                        ];
+                    });
+                    return files;
+                })()
+            },
         },
         jade: {
             components: {
@@ -59,7 +78,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('build', [
-        'newer:jade',
+        'newer:jade', 'uglify'
     ]);
 
     grunt.registerTask('listen', [

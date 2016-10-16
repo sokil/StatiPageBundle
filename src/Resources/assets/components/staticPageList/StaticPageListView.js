@@ -15,6 +15,11 @@ var StaticPageListView = Backbone.View.extend({
     },
 
     renderAsync: function() {
+        if (this.collection.models.length === 0) {
+            this.$el.html(app.render('StaticPageEmptyList'));
+            return;
+        }
+
         this.$el.html(app.render('StaticPageList', {
             pages: this.collection.models
         }));
