@@ -1,0 +1,11 @@
+{
+  "name": "staticPage",
+  "version": "0.0.0",
+  "authors": [
+    "Dmytro Sokil <dmytro.sokil@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "tinymce": "4.2.3"
+  }
+}

@@ -56,6 +56,16 @@ module.exports = function (grunt) {
                 }
             }
         },
+        copy: {
+            tinymce: {
+                expand: true,
+                cwd: 'bower_components/tinymce/',
+                src: [
+                    '**'
+                ],
+                dest: 'Resources/public/js/tinymce'
+            }
+        },
         watch: {
             project: {
                 files: [
@@ -78,7 +88,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('build', [
-        'newer:jade', 'uglify'
+        'newer:jade', 'copy', 'uglify'
     ]);
 
     grunt.registerTask('listen', [

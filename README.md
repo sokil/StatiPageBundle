@@ -71,7 +71,8 @@ security:
 
 ## SPA view
 
-Bundle has some SPA routes for managing static pages, so yoy can configure them, for example with [sokil/frontend-bundle](https://github.com/sokil/FrontendBundle):
+Bundle has some SPA routes and dependencie for managing static pages, so you can configure them, 
+for example with [sokil/frontend-bundle](https://github.com/sokil/FrontendBundle):
 
 ```html
 {% import "@FrontendBundle/Resources/views/macro.html.twig" as frontend %}
@@ -87,6 +88,10 @@ Bundle has some SPA routes for managing static pages, so yoy can configure them,
         options.routers = [
             StaticPageRouter
         ];
+        // requirejs
+        options.requireJs = [
+            StaticPageRequireJsConfig
+        ];
         window.app = new Application(options);
         window.app.start();
     })();
@@ -100,6 +105,7 @@ If you want to use embedded editor, you need to setup SPA.
 You need to execute grunt tasks to build [SPA](#SPA-view):
 ```
 npm install
+bower install
 grunt
 ```
 

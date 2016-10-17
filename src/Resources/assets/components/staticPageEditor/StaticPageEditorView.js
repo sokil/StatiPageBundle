@@ -30,7 +30,7 @@ var StaticPageEditorView = Marionette.ItemView.extend({
         }));
 
         // init tinymce
-        require(['tinymce'], function(tinymce) {
+        require(['staticpage_tinymce'], function(tinymce) {
             // init
             tinymce
                 .init({
